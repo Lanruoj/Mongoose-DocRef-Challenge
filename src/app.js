@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { Book } = require("./models/Book/BookModel");
 mongoose.set("strictQuery", true);
 
 async function dbConnect() {
@@ -8,3 +9,10 @@ async function dbConnect() {
 }
 
 dbConnect();
+
+async function dbSeed(seeds) {
+  await Book.insertMany(seeds);
+}
+const { bookSeeds } = require("./models/Book/BookSeeds");
+// console.log(bookSeeds);
+dbSeed(bookSeeds);
