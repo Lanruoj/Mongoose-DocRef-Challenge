@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { Book } = require("./models/Book/BookModel");
 const { Member } = require("./models/Member/MemberModel");
+const { Review } = require("./models/Review/ReviewModel");
 mongoose.set("strictQuery", true);
 
 async function dbConnect() {
@@ -62,6 +63,30 @@ async function createDB() {
   await Member.insertMany(members)
     .then(() => {
       console.log("Members added");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  const review1 = new Review({
+    book: book1._id,
+    member: member1._id,
+    reviewText: "Good book, a little confusing though",
+  });
+  const review2 = new Review({
+    book: book2._id,
+    member: member2._id,
+    reviewText: "Found it a bit hard to believe but it was an enjoyable read",
+  });
+  const review3 = new Review({
+    book: book3._id,
+    member: member3._id,
+    reviewText: "Amazing book - an absolute classic",
+  });
+  const reviews = [review1, review2, review3];
+  await Review.insertMany(reviews)
+    .then(() => {
+      console.log("Reviews added");
     })
     .catch((err) => {
       console.log(err);
