@@ -52,21 +52,19 @@ async function createDB() {
     .exec();
   // console.log(retrievedMember);
 
-  const retrievedBook = await Book.findOne({
-    name: "Jitterbug Perfume",
-  }).lean();
-
-  const bookResultReviews = await Review.find({
-    book: retrievedBook._id,
-  })
-    .populate("book", "name")
-    .populate("member", "name")
-    .exec();
-
-  console.log(bookResultReviews);
-
-  retrievedBook.reviews = bookResultReviews;
-  // console.log(retrievedBook);
+  const results = await Book.aggregate([
+    { $match: { name: "Jitterbug Perfume" } },
+    {
+      $lookup: {
+        from: "reviews",
+        localField: "_id",
+        foreignField: "book",
+        as: "reviews",
+      },
+    },
+  ]).exec((err, results) => {
+    console.log(results[0]);
+  });
 }
 
 createDB();
