@@ -91,6 +91,12 @@ async function createDB() {
     .catch((err) => {
       console.log(err);
     });
+
+  const retrievedMember = await Member.findOne({ name: "Tane" })
+    .populate("favouriteBook")
+    .exec();
+
+  console.log(retrievedMember);
 }
 
 createDB();
