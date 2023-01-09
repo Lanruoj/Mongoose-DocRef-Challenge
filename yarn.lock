@@ -1094,7 +1094,14 @@ mongodb@4.12.1:
     "@aws-sdk/credential-providers" "^3.186.0"
     saslprep "^1.0.3"
 
-mongoose@^6.8.3:
+mongoose-extend-schema@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/mongoose-extend-schema/-/mongoose-extend-schema-1.0.0.tgz#6b9abf0a626de8e8aaa8c74a9b0dc240cc32d3d5"
+  integrity sha512-/fZtGli3ILtywDiAIhT0v1MbJyOREUsdX8H+Avd6LjpWaTcVWBg+UMg9RuCPw4xrQUNizxzB4/yklw2KndbnXg==
+  dependencies:
+    mongoose "*"
+
+mongoose@*, mongoose@^6.8.3:
   version "6.8.3"
   resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-6.8.3.tgz#6580b9846a9defbb0f0cff317443d4f87e9cce8e"
   integrity sha512-qrVWefJK+wFNBH0ALV+oiyJ+FN42O/BqvHFmlFJJ2LKuNmQEOE0JV8FCxnZqtanwbHs4i+k/SkjhtC+C01haaw==

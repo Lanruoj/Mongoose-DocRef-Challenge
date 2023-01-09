@@ -95,8 +95,12 @@ async function createDB() {
   const retrievedMember = await Member.findOne({ name: "Tane" })
     .populate("favouriteBook")
     .exec();
+  // console.log(retrievedMember);
 
-  console.log(retrievedMember);
+  const retrievedBook = await Book.findById(book1._id).lean();
+  const bookResultReviews = await Review.find({ book: retrievedBook._id });
+  retrievedBook.reviews = bookResultReviews;
+  // console.log(retrievedBook);
 }
 
 createDB();

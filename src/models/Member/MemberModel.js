@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const memberSchema = new Schema({
   name: String,
-  favouriteBook: { type: mongoose.Types.ObjectId, ref: "Book" },
+  favouriteBook: { type: Schema.Types.ObjectId, ref: "Book" },
 });
 
 const Member = mongoose.model("Member", memberSchema);
