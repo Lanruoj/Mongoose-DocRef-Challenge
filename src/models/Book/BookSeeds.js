@@ -1,4 +1,4 @@
-const { Book } = require("./BookModel");
+const { Book } = require("src/models/Book/BookModel");
 
 const bookSeeds = [
   {
@@ -10,6 +10,11 @@ const bookSeeds = [
     name: "Shantaram",
     authorName: "Gregory David Roberts",
     yearPublished: 2003,
+  },
+  {
+    name: "The Catcher in the Rye",
+    authorName: "J. D. Salinger",
+    yearPublished: 1951,
   },
 ];
 
