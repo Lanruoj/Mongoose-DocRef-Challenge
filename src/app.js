@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { Book } = require("./models/Book/BookModel");
+const { Member } = require("./models/Member/MemberModel");
 mongoose.set("strictQuery", true);
 
 async function dbConnect() {
@@ -34,11 +35,33 @@ async function createDB() {
     authorName: "J. D. Salinger",
     yearPublished: 1951,
   });
-
   const books = [book1, book2, book3];
+
   await Book.insertMany(books)
     .then(() => {
       console.log("Books added");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  const member1 = new Member({
+    name: "Tane",
+    favouriteBook: book1._id,
+  });
+  const member2 = new Member({
+    name: "Archie",
+    favouriteBook: book2._id,
+  });
+  const member3 = new Member({
+    name: "John",
+    favouriteBook: book3._id,
+  });
+  const members = [member1, member2, member3];
+
+  await Member.insertMany(members)
+    .then(() => {
+      console.log("Members added");
     })
     .catch((err) => {
       console.log(err);
