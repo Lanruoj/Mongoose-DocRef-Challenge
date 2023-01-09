@@ -55,9 +55,18 @@ async function createDB() {
   const retrievedBook = await Book.findOne({
     name: "Jitterbug Perfume",
   }).lean();
-  const bookResultReviews = await Review.find({ book: retrievedBook._id });
+
+  const bookResultReviews = await Review.find({
+    book: retrievedBook._id,
+  })
+    .populate("book", "name")
+    .populate("member", "name")
+    .exec();
+
+  console.log(bookResultReviews);
+
   retrievedBook.reviews = bookResultReviews;
-  console.log(retrievedBook);
+  // console.log(retrievedBook);
 }
 
 createDB();

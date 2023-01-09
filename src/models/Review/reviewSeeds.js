@@ -8,9 +8,9 @@ const review1 = new Review({
   reviewText: "Good book, a little confusing though",
 });
 const review2 = new Review({
-  book: bookSeeds[1]._id,
+  book: bookSeeds[0]._id,
   member: memberSeeds[1]._id,
-  reviewText: "Found it a bit hard to believe but it was an enjoyable read",
+  reviewText: "Found it a bit hard to follow but it was an enjoyable read",
 });
 const review3 = new Review({
   book: bookSeeds[2]._id,
